@@ -83,7 +83,7 @@ function processRow(sheet, row, token, chatId) {
   const msg = formatMessage(garage, comment, CONFIG.status.new);
   
   if (sendTelegram(token, chatId, msg, keyboard)) {
-    // ИСПРАВЛЕНИЕ: Пишем дату как объект и форматируем ячейку
+    // Пишем дату как объект и форматируем ячейку
     logSentCell.setValue(new Date());
     logSentCell.setNumberFormat("HH:mm | dd.MM");
   }
@@ -122,7 +122,7 @@ function handleCallback(cb) {
       newColor = CONFIG.colors.work;
       replyMarkup = [[ { text: "🏁 Завершить", callback_data: `DONE|${row}` } ]];
       
-      // ИСПРАВЛЕНИЕ: Пишем время начала
+      // Пишем время начала
       const cellStart = sheet.getRange(row, CONFIG.cols.logStart);
       cellStart.setValue(timeNow);
       cellStart.setNumberFormat("HH:mm | dd.MM");
@@ -133,7 +133,7 @@ function handleCallback(cb) {
       newColor = CONFIG.colors.done;
       replyMarkup = [];
       
-      // ИСПРАВЛЕНИЕ: Пишем время конца
+      // Пишем время конца
       const cellEnd = sheet.getRange(row, CONFIG.cols.logEnd);
       cellEnd.setValue(timeNow);
       cellEnd.setNumberFormat("HH:mm | dd.MM");
